@@ -1,0 +1,8 @@
+{
+    "GettingStarted.HelloWorld" : {
+        "service_id": 4660,
+        "instances" : {
+            "GettingStarted.Instance": 22136
+        }
+    }
+}

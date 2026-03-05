@@ -1,0 +1,29 @@
+import "platform:/plugin/org.genivi.commonapi.someip/deployment/CommonAPI-4-SOMEIP_deployment_spec.fdepl"
+import "hello.fidl"
+
+define org.genivi.commonapi.someip.deployment for interface GettingStarted.HelloWorld {
+    SomeIpServiceID = 4660
+
+    method sayHello {
+        SomeIpMethodID = 6000
+        SomeIpReliable = false
+    }
+    
+    broadcast notifyGreeting {
+        SomeIpEventID = 38006
+        SomeIpEventGroups = { 7002 }
+        SomeIpReliable = false
+    }
+}
+
+define org.genivi.commonapi.someip.deployment for provider as Service {
+    instance GettingStarted.HelloWorld {
+        InstanceId = "GettingStarted.Instance"  // when it was just "GettingStarted", i was getting error so take care
+        
+        SomeIpInstanceID = 22136
+    
+        SomeIpUnicastAddress = "127.0.0.1"
+        SomeIpReliableUnicastPort = 30499
+        SomeIpUnreliableUnicastPort = 30499
+    }
+}
